@@ -1,0 +1,315 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                   DYNAMIC SETUP - VISUAL SUMMARY                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+YOUR GOOGLE SHEET (4 Sheets/Tabs)
+═════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          TAB 1: SERVICES                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Name | Price | Duration | Category | Description | Image URL           │
+│ Hair Cutting | 65 | 60 | Hair | Professional haircuts | https://...   │
+│ Hair Coloring | 85 | 90 | Hair | Premium coloring | https://...       │
+│ (Add your services here)                                               │
+└─────────────────────────────────────────────────────────────────────────┘
+                                    ↓
+                          Services Page Shows All
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          TAB 2: GALLERY                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Title | Image URL | Description                                       │
+│ Salon Interior | https://... | Beautiful space                        │
+│ Styling Station | https://... | Modern station                         │
+│ (Add your images here)                                                │
+└─────────────────────────────────────────────────────────────────────────┘
+                                    ↓
+                          Gallery Page Shows All
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          TAB 3: SETTINGS                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Setting | Value                                                        │
+│ Name | Your Salon Name                                               │
+│ Phone | +1 (555) 123-4567                                            │
+│ WhatsApp | +1 (555) 123-4567                                         │
+│ Email | info@yoursalon.com                                           │
+│ Address | 123 Beauty Lane                                            │
+│ City | New York                                                      │
+│ Country | USA                                                        │
+│ Description | Your salon description                                 │
+└─────────────────────────────────────────────────────────────────────────┘
+                      ↓ (Used everywhere)
+        Navbar, Footer, Contact Page, Every Page
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          TAB 4: HOURS (NEW!)                            │
+├─────────────────────────────────────────────────────────────────────────┤
+│ Day | Hours                                                            │
+│ monday | 10:00 AM - 8:00 PM                                          │
+│ tuesday | 10:00 AM - 8:00 PM                                         │
+│ wednesday | 10:00 AM - 8:00 PM                                       │
+│ thursday | 10:00 AM - 8:00 PM                                        │
+│ friday | 10:00 AM - 9:00 PM                                          │
+│ saturday | 9:00 AM - 6:00 PM                                         │
+│ sunday | Closed                                                      │
+└─────────────────────────────────────────────────────────────────────────┘
+                                    ↓
+                     Footer & Contact Page Show Hours
+
+
+═════════════════════════════════════════════════════════════════════════════
+                      WEBSITE STRUCTURE
+═════════════════════════════════════════════════════════════════════════════
+
+                        NAVBAR (Fixed at Top)
+        ┌─────────────────────────────────────────────────┐
+        │ Logo: [LS] Your Salon Name    [Book Now Button] │
+        │                              (Opens WhatsApp)   │
+        └─────────────────────────────────────────────────┘
+                              ↓
+                              ↓ Uses settings.name
+                              ↓ Uses settings.whatsapp
+
+
+        ┌───────────────────────────────────────────────────────┐
+        │                   MAIN CONTENT                        │
+        │                                                       │
+        │  ┌─────────────────────────────────────────────┐     │
+        │  │  HOME PAGE                                  │     │
+        │  │  - Hero section                             │     │
+        │  │  - Featured services (3 from Services sheet)│     │
+        │  │  - Featured gallery (from Gallery sheet)    │     │
+        │  │  - CTA section                              │     │
+        │  └─────────────────────────────────────────────┘     │
+        │                                                       │
+        │  ┌─────────────────────────────────────────────┐     │
+        │  │  SERVICES PAGE                              │     │
+        │  │  - Grid of ALL services                      │     │
+        │  │  - Price & duration shown                    │     │
+        │  │  - Filterable by category                    │     │
+        │  │  ↑ Data from Services sheet                 │     │
+        │  └─────────────────────────────────────────────┘     │
+        │                                                       │
+        │  ┌─────────────────────────────────────────────┐     │
+        │  │  GALLERY PAGE                               │     │
+        │  │  - All images displayed                      │     │
+        │  │  - Lazy loading                              │     │
+        │  │  ↑ Data from Gallery sheet                  │     │
+        │  └─────────────────────────────────────────────┘     │
+        │                                                       │
+        │  ┌─────────────────────────────────────────────┐     │
+        │  │  CONTACT PAGE                               │     │
+        │  │  - Your phone (clickable)                    │     │
+        │  │  - Your email (clickable)                    │     │
+        │  │  - Your address                              │     │
+        │  │  - ALL 7 DAYS OF HOURS                       │     │
+        │  │  - Map with location                         │     │
+        │  │  - WhatsApp button                           │     │
+        │  │  - Call button                               │     │
+        │  │  ↑ Data from Settings & Hours sheets        │     │
+        │  └─────────────────────────────────────────────┘     │
+        │                                                       │
+        └───────────────────────────────────────────────────────┘
+                              ↓
+                              ↓ Uses settings
+
+
+        ┌─────────────────────────────────────────────────┐
+        │         FOOTER (Fixed at Bottom)               │
+        │                                                 │
+        │ Left:              Middle:        Right:        │
+        │ ─────────────────────────────────────────────  │
+        │ [Your Salon]       Contact:       Hours:       │
+        │ Description...     Phone →        Monday →     │
+        │                    Email →        Tuesday →    │
+        │                    Address →      Wednesday →  │
+        │                    City, Country  Thursday →   │
+        │                                   Friday →     │
+        │                                   Saturday →   │
+        │                                   Sunday →     │
+        │                                                 │
+        │  ↑ Uses: settings.name, phone, email,         │
+        │          address, city, country                │
+        │  ↑ Uses: settings.openingHours from Hours sheet│
+        └─────────────────────────────────────────────────┘
+                              ↓
+                    © 2024 Your Salon Name
+
+
+        ┌─────┐
+        │ [WhatsApp] │ Floating Button (bottom right)
+        │  Button    │ ↑ Uses settings.whatsapp
+        └─────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+                       DATA FETCH FLOW
+═════════════════════════════════════════════════════════════════════════════
+
+                        User Loads Website
+                              ↓
+                        app/layout.tsx runs
+                              ↓
+                     fetchSettings() function
+                              ↓
+                     fetchSheetsData() runs
+                              ↓
+        ┌─────────────┬──────────────┬────────────┬───────────┐
+        ↓             ↓              ↓            ↓           ↓
+    Services      Gallery        Settings      Hours      parseData()
+    Sheet CSV     Sheet CSV      Sheet CSV    Sheet CSV   functions
+        ↓             ↓              ↓            ↓           ↓
+    Service[]    GalleryImage[] SalonSettings OpeningHours  ↓
+                                    ↓          (merge)       ↓
+                                SalonSettings (with hours)   ↓
+                                    ↓                        ↓
+                            PageData object                  ↓
+                     {services, gallery, settings}           ↓
+                              ↓                              ↓
+                    All pages receive this data              ↓
+                              ↓                              ↓
+            Website displays your actual information        ↓
+                              ↓                              ↓
+         Cache for 1 hour ← ← ← ← ← ← ← ← ← ← ← ← ← ← ←
+
+
+═════════════════════════════════════════════════════════════════════════════
+                    5 MINUTE SETUP
+═════════════════════════════════════════════════════════════════════════════
+
+Step 1: Create Hours Sheet
+────────────────────────
+Google Sheet → Click "+" → Name it "Hours" → Press Enter
+
+Step 2: Add Headers
+─────────────────
+A1: Day        B1: Hours
+
+Step 3: Add Your Hours
+──────────────────
+A2: monday        B2: 10:00 AM - 8:00 PM
+A3: tuesday       B3: 10:00 AM - 8:00 PM
+A4: wednesday     B4: 10:00 AM - 8:00 PM
+A5: thursday      B5: 10:00 AM - 8:00 PM
+A6: friday        B6: 10:00 AM - 9:00 PM
+A7: saturday      B7: 9:00 AM - 6:00 PM
+A8: sunday        B8: Closed
+
+Step 4: Save
+──────────
+Ctrl+S (auto-saves in Google Sheets)
+
+Step 5: Test
+──────────
+Website → Ctrl+Shift+R → Check Footer → See Hours!
+
+═════════════════════════════════════════════════════════════════════════════
+                     WHAT CHANGED IN CODE
+═════════════════════════════════════════════════════════════════════════════
+
+Only 3 files modified:
+
+lib/sheets.ts
+├─ Now fetches Hours sheet
+├─ Added parseHoursData() function
+└─ Merges hours into settings
+
+components/layout/navbar.tsx
+├─ Receives settings prop
+├─ Shows settings.name
+└─ Uses settings.whatsapp
+
+app/layout.tsx
+└─ Passes settings to Navbar
+
+Everything else stays the same!
+
+
+═════════════════════════════════════════════════════════════════════════════
+                      WHERE THINGS APPEAR
+═════════════════════════════════════════════════════════════════════════════
+
+NAVBAR (top of every page):
+  Logo: [LS] Your Salon Name    [Book Now → WhatsApp]
+            ↑                                ↑
+       settings.name               settings.whatsapp
+
+FOOTER (bottom of every page):
+  Left:           Middle:         Right:
+  ──────────────────────────────────────────
+  Your Salon      Phone          Monday
+  Description     Email          Tuesday
+                  Address        Wednesday
+                  City, Country  Thursday
+                                 Friday
+                                 Saturday
+                                 Sunday
+  ↑ All from Google Sheets!
+
+CONTACT PAGE:
+  Name:      Your Salon Name
+  Phone:     +1 (555) 123-4567      [Click to Call]
+  Email:     info@yoursalon.com     [Click to Email]
+  Address:   123 Beauty Lane, New York, USA
+  Hours:     [All 7 days displayed]
+  Map:       [Google Map with location]
+  Buttons:   [Chat on WhatsApp] [Call Us]
+  ↑ All from Google Sheets!
+
+SERVICES PAGE:
+  [Service Card 1]  [Service Card 2]  [Service Card 3]
+  [Service Card 4]  [Service Card 5]  [Service Card 6]
+  ↑ All from Services sheet!
+
+GALLERY PAGE:
+  [Image 1] [Image 2] [Image 3]
+  [Image 4] [Image 5] [Image 6]
+  ↑ All from Gallery sheet!
+
+
+═════════════════════════════════════════════════════════════════════════════
+                         TESTING CHECKLIST
+═════════════════════════════════════════════════════════════════════════════
+
+After creating Hours sheet:
+
+Reload Website (Ctrl+Shift+R)
+
+Navbar
+  ☐ Shows your salon name
+  ☐ Book Now button opens WhatsApp
+
+Footer
+  ☐ Shows salon name
+  ☐ Shows phone (clickable)
+  ☐ Shows email (clickable)
+  ☐ Shows address, city, country
+  ☐ Shows all 7 days of hours
+
+Contact Page
+  ☐ Shows all info correctly
+  ☐ Shows Opening Hours section
+  ☐ All 7 days visible
+  ☐ Hours in correct format
+
+Services Page
+  ☐ Shows your services
+  ☐ Prices visible
+  ☐ Durations visible
+
+Gallery Page
+  ☐ Shows your images
+  ☐ Titles visible
+
+Buttons
+  ☐ Book Now works
+  ☐ Phone links work
+  ☐ Email links work
+  ☐ WhatsApp button works
+
+If all ☐ are checked, you're done! 🎉
+
+
+═════════════════════════════════════════════════════════════════════════════

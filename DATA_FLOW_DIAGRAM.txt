@@ -1,0 +1,221 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    DYNAMIC DATA FLOW ARCHITECTURE                           ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+YOUR GOOGLE SHEETS
+═════════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────┐
+│   Services Sheet    │
+├─────────────────────┤
+│ Name | Price | ...  │
+│ Hair | 65    | ...  │
+│ Nail | 55    | ...  │
+└─────────────────────┘
+         ↓
+    parseServicesData()
+         ↓
+   Service[] array
+         ↓
+┌──────────────────────────┐
+│   Services Page Shows:   │
+│  ✓ All services         │
+│  ✓ Price & duration     │
+│  ✓ Categories          │
+│  ✓ Images              │
+└──────────────────────────┘
+
+
+┌─────────────────────┐
+│   Gallery Sheet     │
+├─────────────────────┤
+│ Title | Image URL   │
+│ Salon | https://... │
+└─────────────────────┘
+         ↓
+   parseGalleryData()
+         ↓
+ GalleryImage[] array
+         ↓
+┌──────────────────────────┐
+│   Gallery Page Shows:    │
+│  ✓ All images           │
+│  ✓ Titles               │
+│  ✓ Descriptions         │
+│  ✓ Lazy loading         │
+└──────────────────────────┘
+
+
+┌──────────────────────────┐
+│   Settings Sheet         │
+├──────────────────────────┤
+│ Setting | Value          │
+│ Name    | Your Salon     │
+│ Phone   | +1 555 123 456 │
+│ Email   | info@salon.com │
+│ Address | 123 Lane       │
+│ City    | New York       │
+│ Country | USA            │
+│ Description | ...        │
+└──────────────────────────┘
+         ↓
+   parseSettingsData()
+         ↓
+    SalonSettings object
+         ↓
+┌──────────────────────────────────────────┐
+│   Used Throughout Website:               │
+│  ✓ Navbar - salon name, WhatsApp link   │
+│  ✓ Footer - company info, contact       │
+│  ✓ Contact page - all info, map         │
+│  ✓ Floating WhatsApp button             │
+│  ✓ All pages - metadata                 │
+└──────────────────────────────────────────┘
+
+
+┌──────────────────────────┐
+│   Hours Sheet (NEW!)      │
+├──────────────────────────┤
+│ Day   | Hours            │
+│ monday| 10 AM - 8 PM     │
+│ tues  | 10 AM - 8 PM     │
+│ ...   | ...              │
+│ sun   | Closed           │
+└──────────────────────────┘
+         ↓
+   parseHoursData()
+         ↓
+  OpeningHours object
+         ↓
+┌──────────────────────────────────────────┐
+│   Used On Website:                       │
+│  ✓ Footer - all 7 days                  │
+│  ✓ Contact page - full hours display    │
+│  ✓ Dynamically updated whenever changed │
+└──────────────────────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+                         DATA FETCHING PIPELINE
+═════════════════════════════════════════════════════════════════════════════
+
+Every 1 Hour OR On Page Load:
+
+┌─────────────────────────────────────────────────────────┐
+│  fetchSheetsData() in lib/sheets.ts                     │
+│                                                         │
+│  Fetches ALL 4 sheets in PARALLEL:                     │
+│  ┌──────────────────────────────────┐                 │
+│  │ Fetch Services + Parse            │                 │
+│  │ Fetch Gallery + Parse             │                 │
+│  │ Fetch Settings + Parse            │                 │
+│  │ Fetch Hours + Parse & Merge       │                 │
+│  └──────────────────────────────────┘                 │
+└─────────────────────────────────────────────────────────┘
+         ↓ (returns PageData object)
+┌─────────────────────────────────────────────────────────┐
+│  PageData object contains:                              │
+│  {                                                      │
+│    services: Service[],                                │
+│    gallery: GalleryImage[],                            │
+│    settings: SalonSettings (with hours merged in)      │
+│  }                                                      │
+└─────────────────────────────────────────────────────────┘
+         ↓
+┌─────────────────────────────────────────────────────────┐
+│  All Pages Use This Data:                               │
+│  ✓ app/layout.tsx          (layout & navbar & footer)  │
+│  ✓ app/page.tsx            (home)                       │
+│  ✓ app/services/page.tsx   (services grid)             │
+│  ✓ app/gallery/page.tsx    (gallery)                   │
+│  ✓ app/contact/page.tsx    (contact info)             │
+└─────────────────────────────────────────────────────────┘
+
+
+═════════════════════════════════════════════════════════════════════════════
+                          COMPONENT HIERARCHY
+═════════════════════════════════════════════════════════════════════════════
+
+RootLayout (app/layout.tsx)
+    ↓ fetchSettings() → gets all data including hours
+    ├─→ Navbar(settings) 
+    │   ├─→ displays: settings.name
+    │   └─→ WhatsApp link: settings.whatsapp
+    │
+    ├─→ main (children)
+    │   ├─→ HomePage (Services page displays from settings.services)
+    │   ├─→ ServicesPage (ServiceCard uses settings.services)
+    │   ├─→ GalleryPage (GalleryGrid uses settings.gallery)
+    │   └─→ ContactPage (ContactInfo uses settings)
+    │
+    ├─→ Footer(settings)
+    │   ├─→ displays: settings.name
+    │   ├─→ displays: settings.phone, settings.email
+    │   ├─→ displays: settings.openingHours (from Hours sheet!)
+    │   └─→ displays: settings.address, settings.city
+    │
+    └─→ FloatingWhatsApp(settings.whatsapp)
+        └─→ displays: WhatsApp button with settings.whatsapp
+
+
+═════════════════════════════════════════════════════════════════════════════
+                      WHAT CHANGED IN CODE
+═════════════════════════════════════════════════════════════════════════════
+
+1. lib/sheets.ts
+   ✓ fetchSheetsData() now fetches Hours sheet
+   ✓ parseHoursData() new function
+   ✓ Hours merged into settings.openingHours
+
+2. components/layout/navbar.tsx
+   ✓ Now accepts settings prop
+   ✓ Displays settings.name (salon name)
+   ✓ Uses settings.whatsapp for WhatsApp link
+
+3. app/layout.tsx
+   ✓ Passes settings to Navbar component
+
+That's it! No other changes needed.
+
+
+═════════════════════════════════════════════════════════════════════════════
+                    CACHING & PERFORMANCE
+═════════════════════════════════════════════════════════════════════════════
+
+Caching Strategy:
+┌────────────────────────────────────────────────┐
+│ First Load:     Downloads from Google Sheets    │
+│ Next 1 Hour:    Uses cached version            │
+│ After 1 Hour:   Refreshes from Google Sheets   │
+│ Hard Refresh:   Ctrl+Shift+R (skips cache)    │
+└────────────────────────────────────────────────┘
+
+Benefits:
+✓ Fast page loads (uses cache)
+✓ Changes appear within 1 hour
+✓ Automatic updates without manual intervention
+✓ Works offline for 1 hour
+
+
+═════════════════════════════════════════════════════════════════════════════
+                         EXAMPLE DATA FLOW
+═════════════════════════════════════════════════════════════════════════════
+
+User visits your website:
+1. Browser sends request to website
+2. Layout.tsx calls fetchSettings()
+3. fetchSettings() calls fetchSheetsData()
+4. fetchSheetsData() fetches all 4 sheets in parallel
+5. Parse functions convert CSV to TypeScript objects
+6. parseHoursData() creates OpeningHours object
+7. Hours merged into SalonSettings object
+8. PageData returned with services, gallery, settings
+9. Navbar rendered with settings.name
+10. Footer rendered with settings + settings.openingHours
+11. Services page shows settings.services
+12. Gallery page shows settings.gallery
+13. Contact page shows settings + settings.openingHours
+14. User sees everything from YOUR Google Sheet!
+
+
+═════════════════════════════════════════════════════════════════════════════

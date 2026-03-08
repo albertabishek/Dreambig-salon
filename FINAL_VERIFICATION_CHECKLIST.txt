@@ -1,0 +1,194 @@
+FINAL VERIFICATION CHECKLIST - EVERYTHING WORKING
+===================================================
+
+STEP 1: ENSURE YOUR GOOGLE SHEET IS CORRECT
+============================================
+
+☐ Open your Google Sheet: https://docs.google.com/spreadsheets/d/1UysFDqjGUPw7JH2Z3zJBvVuVyG9f3OJxr8S4eBBEii4
+
+☐ SETTINGS SHEET - Has 2 columns: Setting | Value
+  ☐ Name | Your Salon Name
+  ☐ Phone | +91-9234567890 (with country code)
+  ☐ WhatsApp | +91-9234567890 (with country code)
+  ☐ Email | your@email.com
+  ☐ Address | Street Address
+  ☐ City | City Name
+  ☐ Country | Country Name
+  ☐ Description | Your salon description
+  ☐ Latitude | 28.6139 (for Google Map)
+  ☐ Longitude | 77.2090 (for Google Map)
+
+☐ HOURS SHEET - Has 2 columns: Day | Hours
+  ☐ monday | 10:00 AM - 8:00 PM
+  ☐ tuesday | 10:00 AM - 8:00 PM
+  ☐ wednesday | 10:00 AM - 8:00 PM
+  ☐ thursday | 10:00 AM - 8:00 PM
+  ☐ friday | 10:00 AM - 8:00 PM
+  ☐ saturday | 10:00 AM - 8:00 PM
+  ☐ sunday | Closed (or operating hours)
+
+☐ SERVICES SHEET - Has 6 columns: Name | Price | Duration | Category | Description | Image URL
+  ☐ At least 3-4 services added
+
+☐ GALLERY SHEET - Has 3 columns: Title | Image URL | Description
+  ☐ At least 3-4 images added
+
+☐ SHARE SETTINGS - Sheet is PUBLIC
+  ☐ Click Share → Anyone with link → View only
+
+STEP 2: RELOAD WEBSITE
+======================
+
+☐ Hard refresh: Ctrl+Shift+R (Windows/Linux) or Cmd+Shift+R (Mac)
+☐ Wait 5 seconds for page to load
+☐ Check browser console (F12) for any errors
+
+STEP 3: VERIFY NAVBAR (Top of Page)
+===================================
+
+☐ Salon name is displayed (not "Luxury Salon")
+☐ "Book Now" button exists
+☐ "Book Now" button opens WhatsApp with your phone number (check URL)
+
+STEP 4: VERIFY HERO SECTION (Main Banner)
+==========================================
+
+☐ Displays your salon name (from Settings.Name)
+☐ Displays your description (from Settings.Description)
+☐ "Book an Appointment" button opens WhatsApp with your number
+☐ "Explore Services" button works and goes to services page
+
+STEP 5: VERIFY LOCATION SECTION (On Home)
+==========================================
+
+☐ Shows your address from Google Sheets
+☐ Shows your city and country
+☐ Shows Google Map with correct coordinates
+☐ Shows "Call Us" button with your phone number
+☐ Shows all 7 days of hours (monday-sunday)
+☐ Each day shows correct hours format (e.g., "10:00 AM - 8:00 PM")
+
+STEP 6: VERIFY CTA SECTION (Before Footer)
+============================================
+
+☐ "Ready for a Transformation?" heading displays
+☐ "Book Now on WhatsApp" button uses your WhatsApp number
+☐ "Call Us" button uses your phone number
+☐ Hours text shows "10:00 AM - 8:00 PM • Walk-ins Welcome" (Monday hours)
+
+STEP 7: VERIFY FOOTER (Bottom of All Pages)
+============================================
+
+☐ Displays salon name
+☐ Displays your description
+☐ Phone number is clickable (tel: link)
+☐ Email is clickable (mailto: link)
+☐ Address is displayed with city and country
+☐ All 7 days of the week are shown with hours:
+  ☐ Monday: 10:00 AM - 8:00 PM
+  ☐ Tuesday: 10:00 AM - 8:00 PM
+  ☐ Wednesday: 10:00 AM - 8:00 PM
+  ☐ Thursday: 10:00 AM - 8:00 PM
+  ☐ Friday: 10:00 AM - 8:00 PM
+  ☐ Saturday: 10:00 AM - 8:00 PM
+  ☐ Sunday: Closed (or your hours)
+
+STEP 8: VERIFY CONTACT PAGE
+============================
+
+Go to /contact page and verify:
+
+☐ Phone section:
+  ☐ Shows your phone number
+  ☐ Phone number is clickable
+  ☐ Clicking opens phone dialer
+
+☐ Email section:
+  ☐ Shows your email
+  ☐ Email is clickable
+  ☐ Clicking opens email composer
+
+☐ Address section:
+  ☐ Shows full address with city and country
+
+☐ Hours section:
+  ☐ Shows all 7 days with hours
+  ☐ Format is correct
+
+☐ Quick Links:
+  ☐ "Chat on WhatsApp" button works
+  ☐ "Call Us" button works
+
+☐ Google Map:
+  ☐ Shows your salon location
+  ☐ Map is centered correctly with your coordinates
+
+STEP 9: VERIFY FLOATING WHATSAPP BUTTON
+=======================================
+
+☐ Green WhatsApp button visible in bottom-right on all pages
+☐ Clicking opens WhatsApp with your number
+☐ Pre-filled message appears: "Hi, I'd like to book an appointment!"
+
+STEP 10: VERIFY SERVICES PAGE
+=============================
+
+Go to /services page and verify:
+
+☐ Shows all services from your Services sheet
+☐ Each service shows:
+  ☐ Service name
+  ☐ Description
+  ☐ Price (as number, e.g., "65")
+  ☐ Duration (as number with "min", e.g., "60 min")
+  ☐ Category label
+
+STEP 11: VERIFY GALLERY PAGE
+=============================
+
+Go to /gallery page and verify:
+
+☐ Shows all images from your Gallery sheet
+☐ Each image shows title and description
+☐ Images load correctly
+☐ Hover effects work
+
+TROUBLESHOOTING:
+================
+
+If something doesn't show:
+
+1. Check Google Sheet is PUBLIC
+   → Share → Change to "Anyone with link" → Viewer
+
+2. Check column headers are EXACT (case matters for Day names)
+   → Settings: Setting | Value
+   → Hours: Day | Hours (day values: monday-sunday lowercase)
+   → Services: Name | Price | Duration | Category | Description | Image URL
+   → Gallery: Title | Image URL | Description
+
+3. Check data format:
+   → Phone: +91-9234567890 (WITH country code)
+   → Hours: 10:00 AM - 8:00 PM (12-hour format)
+   → Days: lowercase (monday, not Monday)
+   → Price: numbers only (65, not $65)
+   → Duration: numbers only (60, not 60 min)
+
+4. Hard refresh (Ctrl+Shift+R)
+
+5. Clear browser cache if still not working:
+   → Settings → Clear browsing data → All time
+
+6. Check browser console for errors:
+   → F12 → Console tab → Look for red errors
+
+ALL CHECKS PASSED? ✅
+====================
+
+If you've checked all items above and everything is working, your website is now:
+✅ 100% Dynamic
+✅ Powered by Google Sheets
+✅ No hardcoded data anywhere
+✅ Easy to maintain and update
+
+You can now edit your Google Sheet and changes appear on the website within 1 hour!

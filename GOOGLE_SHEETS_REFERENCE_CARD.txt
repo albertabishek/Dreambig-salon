@@ -1,0 +1,301 @@
+================================================================================
+                    GOOGLE SHEETS REFERENCE CARD
+                   Print this and keep it nearby!
+================================================================================
+
+YOUR 3 SHEETS AT A GLANCE
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         SERVICES SHEET                                       │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ ROW 1 (Headers):                                                             │
+│ Name | Price | Duration | Category | Description | Image URL               │
+│                                                                              │
+│ RULES:                                                                       │
+│ ├─ Name: Text (up to 50 chars)                                             │
+│ ├─ Price: NUMBERS ONLY (65, not "$65")                                     │
+│ ├─ Duration: NUMBERS ONLY (60, not "60 min")                               │
+│ ├─ Category: EXACTLY one of:                                               │
+│ │  ├─ Hair                                                                  │
+│ │  ├─ Skincare                                                              │
+│ │  ├─ Nails                                                                 │
+│ │  ├─ Wellness                                                              │
+│ │  └─ Makeup                                                                │
+│ ├─ Description: 1-3 sentences                                               │
+│ └─ Image URL: https://... (complete URL)                                    │
+│                                                                              │
+│ MINIMUM: 3 services                                                          │
+│ RECOMMENDED: 6-12 services                                                  │
+│                                                                              │
+│ EXAMPLE:                                                                     │
+│ Hair Cutting & Styling | 65 | 60 | Hair | Professional haircuts... | https│
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                         GALLERY SHEET                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ ROW 1 (Headers):                                                             │
+│ Title | Image URL | Description                                             │
+│                                                                              │
+│ RULES:                                                                       │
+│ ├─ Title: Short name (1-3 words)                                            │
+│ ├─ Image URL: REQUIRED, must be https://...                                │
+│ └─ Description: Optional (2-5 words)                                        │
+│                                                                              │
+│ MINIMUM: 3 images                                                            │
+│ RECOMMENDED: 6-12 images                                                    │
+│                                                                              │
+│ EXAMPLE:                                                                     │
+│ Salon Interior | https://images.unsplash.com/photo... | Beautiful interior │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        SETTINGS SHEET                                        │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│ ROW 1 (Headers):                                                             │
+│ Setting | Value                                                              │
+│                                                                              │
+│ SETTINGS (must be exactly spelled):                                         │
+│ ├─ Name         → Your salon name                                           │
+│ ├─ Phone        → Your phone number                                         │
+│ ├─ WhatsApp     → Your WhatsApp number                                      │
+│ ├─ Email        → Your email address                                        │
+│ ├─ Address      → Street address                                            │
+│ ├─ City         → City name                                                 │
+│ ├─ Country      → Country name                                              │
+│ └─ Description  → About your salon (1-2 sentences)                          │
+│                                                                              │
+│ REQUIRED: All 8 settings                                                     │
+│                                                                              │
+│ EXAMPLE:                                                                     │
+│ Name | Luxury Salon                                                          │
+│ Phone | +1 (555) 123-4567                                                   │
+│                                                                              │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+                        SETUP CHECKLIST
+================================================================================
+
+PART 1: CREATE SHEET & TABS
+  ☐ Go to sheets.google.com
+  ☐ Click "+ Create" → "Blank spreadsheet"
+  ☐ Name it (e.g., "Salon Data")
+  ☐ Rename "Sheet1" to "Services"
+  ☐ Add sheet → Rename to "Gallery"
+  ☐ Add sheet → Rename to "Settings"
+
+PART 2: SERVICES SHEET
+  ☐ Add headers in Row 1
+  ☐ Add 6+ services in Rows 2+
+  ☐ All prices are numbers
+  ☐ All durations are numbers
+  ☐ All categories match exactly
+  ☐ All descriptions are complete
+  ☐ Image URLs are complete (or empty)
+
+PART 3: GALLERY SHEET
+  ☐ Add headers in Row 1
+  ☐ Add 3+ images in Rows 2+
+  ☐ All Image URLs are filled
+  ☐ All Image URLs start with https://
+  ☐ All Image URLs work (test in browser)
+
+PART 4: SETTINGS SHEET
+  ☐ Add headers in Row 1
+  ☐ Add all 8 settings in Rows 2-9
+  ☐ Setting names are spelled exactly right
+  ☐ All values are filled in
+
+PART 5: SHARE & VERIFY
+  ☐ Click "Share" button
+  ☐ Change to "Anyone with the link"
+  ☐ Select "Viewer" access
+  ☐ Copy share link
+  ☐ Test in incognito mode (open share link)
+  ☐ Can see data without logging in?
+
+PART 6: PREPARE FOR DEVELOPER
+  ☐ Copy SHEET_ID from URL
+  ☐ Save SHEET_ID
+  ☐ Save public share link
+
+================================================================================
+                       COMMON MISTAKES & FIXES
+================================================================================
+
+WRONG → RIGHT
+
+Price: "$65"           → Price: 65
+Price: "65.00"        → Price: 65
+Duration: "60 min"    → Duration: 60
+Duration: "1 hour"    → Duration: 60
+Category: "haircut"   → Category: Hair
+Category: "HAIR"      → Category: Hair
+Image: "/photo.jpg"   → Image: https://...jpg
+Image: "photo.jpg"    → Image: https://...jpg
+
+Setting: "phone"      → Setting: Phone
+Setting: "Email"      → Setting: Email
+Setting: "whatsapp"   → Setting: WhatsApp
+
+================================================================================
+                      TROUBLESHOOTING
+================================================================================
+
+PROBLEM: Website shows demo/default data, not my Google Sheets
+  → Is sheet PUBLIC? (MOST COMMON!)
+  → Solution: Share → "Viewer" access → Share
+
+PROBLEM: Prices appear blank on website
+  → Contains $ or decimal? (65.00, $65, etc.)
+  → Solution: Use NUMBERS ONLY (65)
+
+PROBLEM: Gallery images don't show
+  → Image URL incomplete or broken?
+  → Solution: Use complete https://... URL
+  → Test: Paste URL in browser, image should load
+
+PROBLEM: Services won't filter by category
+  → Category misspelled or wrong case?
+  → Solution: Use EXACTLY: Hair, Skincare, Nails, Wellness, Makeup
+
+PROBLEM: Settings don't appear on website
+  → Setting names misspelled?
+  → Solution: Check exact spelling in SETTINGS SHEET RULES above
+
+PROBLEM: Can't find SHEET_ID
+  → Look at URL: docs.google.com/spreadsheets/d/{SHEET_ID}/edit
+  → Copy the {SHEET_ID} part
+
+================================================================================
+                      FREE IMAGE SOURCES
+================================================================================
+
+UNSPLASH (unsplash.com)
+  Search: "salon", "hair", "spa", "beauty", "nails"
+  URL format: https://images.unsplash.com/photo-xxxxx?w=400
+
+PEXELS (pexels.com)
+  Search: "hairdresser", "salon", "massage", "spa"
+  URL format: https://images.pexels.com/photos/xxxxx/...
+
+PIXABAY (pixabay.com)
+  Search: "salon", "spa", "beauty", "wellness"
+  URL format: https://cdn.pixabay.com/photo/...
+
+================================================================================
+                    WHAT APPEARS ON WEBSITE
+================================================================================
+
+YOUR SERVICES SHEET
+            ↓
+    SERVICES PAGE
+    ├─ Cards for each service
+    ├─ Search bar
+    ├─ Filter by category
+    ├─ Shows price & duration
+    └─ Displays images
+
+YOUR GALLERY SHEET
+            ↓
+    GALLERY PAGE
+    ├─ Photo grid
+    ├─ Hover effects
+    └─ Lightbox view
+
+YOUR SETTINGS SHEET
+            ↓
+    APPEARS IN:
+    ├─ Header (salon name)
+    ├─ Footer (contact info)
+    ├─ Contact page (all settings)
+    └─ Home page (description)
+
+================================================================================
+                      EXAMPLE DATA (COPY THIS)
+================================================================================
+
+SERVICES (Row 1 headers, then data):
+───────────────────────────────────────────────────────────────────────────────
+Name|Price|Duration|Category|Description|Image URL
+Hair Cutting & Styling|65|60|Hair|Professional haircuts...|https://...
+Hair Coloring|85|90|Hair|Premium coloring...|https://...
+Facial Treatment|75|60|Skincare|Rejuvenating facial...|https://...
+Manicure & Pedicure|55|45|Nails|Luxurious nail care...|https://...
+Massage Therapy|80|60|Wellness|Relaxing massage...|https://...
+Makeup Application|50|45|Makeup|Professional makeup...|https://...
+
+GALLERY (Row 1 headers, then data):
+───────────────────────────────────────────────────────────────────────────────
+Title|Image URL|Description
+Salon Interior|https://images.unsplash.com/photo-1560708537...|Beautiful salon
+Styling Station|https://images.unsplash.com/photo-1562122176...|Professional
+Treatment Room|https://images.unsplash.com/photo-1596178065...|Private room
+
+SETTINGS (Row 1 headers, then data):
+───────────────────────────────────────────────────────────────────────────────
+Setting|Value
+Name|Luxury Salon
+Phone|+1 (555) 123-4567
+WhatsApp|+1 (555) 123-4567
+Email|info@luxurysalon.com
+Address|123 Beauty Lane
+City|New York
+Country|USA
+Description|Experience luxury beauty services at our salon...
+
+================================================================================
+                         QUICK STEPS
+================================================================================
+
+1. Create Google Sheet
+2. Rename Sheet1 → Services
+3. Add 2 more sheets → Gallery, Settings
+4. Fill Services sheet (copy example above)
+5. Fill Gallery sheet (copy example above)
+6. Fill Settings sheet (copy example above)
+7. Click Share → "Viewer" access
+8. Copy SHEET_ID from URL
+9. Give to developer
+
+DONE! Website pulls data from your sheet!
+
+================================================================================
+                     DOCUMENTATION FILES
+================================================================================
+
+START_HERE_GOOGLE_SHEETS.md
+  ↑ Read this first!
+
+GOOGLE_SHEETS_QUICK_REFERENCE.txt
+  ↑ One-page overview (this file)
+
+GOOGLE_SHEETS_EXAMPLES.md
+  ↑ Copy & paste examples
+
+GOOGLE_SHEETS_CHECKLIST.md
+  ↑ Step-by-step checklist
+
+GOOGLE_SHEETS_SETUP.md
+  ↑ Complete detailed guide
+
+GOOGLE_SHEETS_VISUAL_GUIDE.md
+  ↑ Diagrams and visuals
+
+GOOGLE_SHEETS_INDEX.md
+  ↑ Navigation guide
+
+================================================================================
+
+REMEMBER: Your most likely issue is the sheet not being PUBLIC!
+Solution: Share → "Anyone with the link" → "Viewer" access
+
+This will solve 50% of issues!
+
+================================================================================

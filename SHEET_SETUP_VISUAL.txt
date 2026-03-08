@@ -1,0 +1,192 @@
+================================================================================
+                    GOOGLE SHEETS SETUP - VISUAL REFERENCE
+================================================================================
+
+YOUR GOOGLE SHEET HAS 4 TABS:
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ [Services] [Gallery] [Settings] [Hours]                                    │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+TAB 1: SETTINGS (Controls all salon info)
+================================================================================
+
+Structure:
+┌──────────────┬─────────────────────────────┐
+│ Setting      │ Value                       │
+├──────────────┼─────────────────────────────┤
+│ Name         │ My Luxury Salon             │
+│ Phone        │ +91-9234567890              │
+│ WhatsApp     │ +91-9234567890              │
+│ Email        │ info@salon.com              │
+│ Address      │ 123 Main Street             │
+│ City         │ Mumbai                      │
+│ Country      │ India                       │
+│ Latitude     │ 19.0760                     │
+│ Longitude    │ 72.8777                     │
+│ Description  │ Premium beauty services     │
+└──────────────┴─────────────────────────────┘
+
+USED ON THESE PAGES:
+- Navbar: Shows Name, uses WhatsApp for button link
+- Footer: Shows Name, Phone, Email, Address, City, Country, Description
+- Contact Page: Shows Phone, Email, Address, City, Country, Map (Lat/Long)
+
+IMPORTANT RULES:
+✓ Phone/WhatsApp: +91-9234567890 (with country code and +)
+✓ Latitude/Longitude: Must be numbers (19.0760, 72.8777)
+✓ Description: Can be up to 500 characters
+✓ All fields are required for proper display
+
+================================================================================
+TAB 2: SERVICES (Controls Services page & home preview)
+================================================================================
+
+Structure:
+┌──────────────────────┬───────┬──────────┬──────────┬─────────────────┬────────────┐
+│ Name                 │ Price │ Duration │ Category │ Description     │ Image URL  │
+├──────────────────────┼───────┼──────────┼──────────┼─────────────────┼────────────┤
+│ Hair Cutting         │ 65    │ 60       │ Hair     │ Professional... │ https://.. │
+│ Facial Treatment     │ 75    │ 60       │ Skincare │ Rejuvenating... │ https://.. │
+│ Manicure & Pedicure  │ 55    │ 45       │ Nails    │ Luxurious...    │ https://.. │
+└──────────────────────┴───────┴──────────┴──────────┴─────────────────┴────────────┘
+
+COLUMN RULES:
+✓ Name: Any text (required)
+✓ Price: Numbers ONLY - 65 (NOT $65 or 65.00)
+✓ Duration: Minutes ONLY - 60 (NOT 60 min or 1 hour)
+✓ Category: Hair, Skincare, Nails, Wellness, Makeup
+✓ Description: Any text (required)
+✓ Image URL: Optional, must start with https://
+
+USED ON THESE PAGES:
+- Services page: Shows all services
+- Home page: Shows first 3-4 services preview
+
+================================================================================
+TAB 3: GALLERY (Controls Gallery page & home preview)
+================================================================================
+
+Structure:
+┌────────────────────┬──────────────────────────┬───────────────────┐
+│ Title              │ Image URL                │ Description       │
+├────────────────────┼──────────────────────────┼───────────────────┤
+│ Salon Entrance     │ https://example.com/1.jpg│ Beautiful entrance│
+│ Hair Station       │ https://example.com/2.jpg│ Modern equipment  │
+│ Treatment Room     │ https://example.com/3.jpg│ Comfortable space │
+└────────────────────┴──────────────────────────┴───────────────────┘
+
+COLUMN RULES:
+✓ Title: Any text (required)
+✓ Image URL: Must start with https:// (required)
+✓ Description: Optional text
+
+USED ON THESE PAGES:
+- Gallery page: Shows all images
+- Home page: Shows first 3-4 images preview
+
+================================================================================
+TAB 4: HOURS (Controls Footer & Contact page opening hours)
+================================================================================
+
+Structure (EXACTLY as shown):
+┌───────────┬────────────────────────┐
+│ Day       │ Hours                  │
+├───────────┼────────────────────────┤
+│ monday    │ 10:00 AM - 8:00 PM     │
+│ tuesday   │ 10:00 AM - 8:00 PM     │
+│ wednesday │ 10:00 AM - 8:00 PM     │
+│ thursday  │ 10:00 AM - 8:00 PM     │
+│ friday    │ 10:00 AM - 9:00 PM     │
+│ saturday  │ 9:00 AM - 6:00 PM      │
+│ sunday    │ Closed                 │
+└───────────┴────────────────────────┘
+
+CRITICAL RULES:
+✓ Day names MUST be lowercase: monday, tuesday, wednesday... (NOT Monday, MONDAY)
+✓ ALL 7 days required (monday through sunday)
+✓ Hours format: 10:00 AM - 8:00 PM (with dashes and AM/PM)
+✓ For closed days: "Closed" (exactly)
+
+USED ON THESE PAGES:
+- Footer: Shows hours for all 7 days
+- Contact Page: Shows hours for all 7 days
+
+================================================================================
+QUICK CHECKLIST BEFORE RELOADING WEBSITE
+================================================================================
+
+□ Settings sheet has all 10 fields (Name, Phone, WhatsApp, Email, Address, City, Country, Latitude, Longitude, Description)
+□ Phone format: +CountryCode-Number (e.g., +91-9234567890)
+□ WhatsApp format: Same as phone (+91-9234567890)
+□ Services have Name, Price (numbers only), Duration (numbers only), Category, Description
+□ Gallery has Title, Image URL (https://), Description
+□ Hours has all 7 days in lowercase (monday, tuesday, wednesday...)
+□ Hours format is 12-hour: 10:00 AM - 8:00 PM
+□ All Image URLs start with https://
+□ Sheet is PUBLIC (Share → Anyone with link → Viewer)
+
+================================================================================
+PHONE NUMBER FORMAT GUIDE
+================================================================================
+
+Your country code: 91 (India)
+
+✓ CORRECT FORMATS (All work the same):
+  +91-9234567890
+  +91 92345 67890
+  +919234567890
+
+✗ WRONG FORMATS (Don't use):
+  9234567890 (missing +91)
+  91-9234567890 (missing +)
+  +91 9234567890 (will work but is missing dashes)
+
+The website automatically extracts just the numbers for WhatsApp links.
+
+================================================================================
+DATA LOCATION GUIDE
+================================================================================
+
+Where does the data appear?
+
+SETTINGS data appears in:
+├─ Navbar (Name, WhatsApp button)
+├─ Footer (Name, Phone, Email, Address, Hours)
+└─ Contact Page (All fields + Map)
+
+SERVICES data appears in:
+├─ Home Page (First 3-4 services)
+└─ Services Page (All services)
+
+GALLERY data appears in:
+├─ Home Page (First 3-4 images)
+└─ Gallery Page (All images)
+
+HOURS data appears in:
+├─ Footer (All 7 days)
+└─ Contact Page (All 7 days)
+
+================================================================================
+TROUBLESHOOTING QUICK GUIDE
+================================================================================
+
+Problem: Phone number not showing
+Solution: Check format is +91-9234567890 (must have + and country code)
+
+Problem: WhatsApp button not working
+Solution: Same format as phone number
+
+Problem: Hours not showing
+Solution: Check day names are lowercase: monday (not Monday)
+
+Problem: Map not showing
+Solution: Check Latitude/Longitude are numbers: 19.0760 (not text)
+
+Problem: Services/Gallery not showing
+Solution: Check Image URLs start with https://
+
+Problem: Nothing updated
+Solution: Wait 1 hour OR hard refresh (Ctrl+Shift+R) OR redeploy website
+
+================================================================================

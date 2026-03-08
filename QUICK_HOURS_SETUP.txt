@@ -1,0 +1,115 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║            QUICK HOURS SHEET SETUP - 5 MINUTES                             ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: CREATE NEW SHEET
+────────────────────────
+1. Open your Google Sheet
+2. Click "+" button at bottom
+3. Name it: Hours
+4. Press Enter
+
+STEP 2: ADD HEADERS (Row 1)
+──────────────────────────
+A1: Day
+B1: Hours
+
+STEP 3: ADD YOUR HOURS (Starting Row 2)
+───────────────────────────────────────
+Copy and paste this into your Hours sheet:
+
+Day                 | Hours
+monday              | 10:00 AM - 8:00 PM
+tuesday             | 10:00 AM - 8:00 PM
+wednesday           | 10:00 AM - 8:00 PM
+thursday            | 10:00 AM - 8:00 PM
+friday              | 10:00 AM - 9:00 PM
+saturday            | 9:00 AM - 6:00 PM
+sunday              | Closed
+
+(Or use your own hours)
+
+STEP 4: SAVE & TEST
+───────────────────
+1. Make sure your sheet is PUBLIC
+2. Reload website (Ctrl+Shift+R)
+3. Check Footer → Hours section
+4. Check Contact page → Opening Hours
+
+═══════════════════════════════════════════════════════════════════════════════
+
+IMPORTANT RULES:
+────────────────
+✅ Use lowercase day names: monday (NOT Monday)
+✅ Use this format: 10:00 AM - 8:00 PM (NOT 10-20 or 10am-8pm)
+✅ Include all 7 days (don't skip any)
+✅ For closed days, write: Closed (or "By Appointment")
+
+═══════════════════════════════════════════════════════════════════════════════
+
+HOURS EXAMPLES:
+───────────────
+
+Standard Salon Hours:
+monday              | 10:00 AM - 8:00 PM
+tuesday             | 10:00 AM - 8:00 PM
+wednesday           | 10:00 AM - 8:00 PM
+thursday            | 10:00 AM - 8:00 PM
+friday              | 10:00 AM - 9:00 PM
+saturday            | 9:00 AM - 6:00 PM
+sunday              | Closed
+
+24/7 Salon:
+monday              | Open 24/7
+tuesday             | Open 24/7
+wednesday           | Open 24/7
+thursday            | Open 24/7
+friday              | Open 24/7
+saturday            | Open 24/7
+sunday              | Open 24/7
+
+By Appointment Only:
+monday              | By Appointment
+tuesday             | By Appointment
+wednesday           | By Appointment
+thursday            | By Appointment
+friday              | By Appointment
+saturday            | By Appointment
+sunday              | Closed
+
+Evening Hours:
+monday              | 2:00 PM - 9:00 PM
+tuesday             | 2:00 PM - 9:00 PM
+wednesday           | 2:00 PM - 9:00 PM
+thursday            | 2:00 PM - 9:00 PM
+friday              | 12:00 PM - 10:00 PM
+saturday            | 10:00 AM - 8:00 PM
+sunday              | Closed
+
+═══════════════════════════════════════════════════════════════════════════════
+
+WHERE HOURS APPEAR:
+───────────────────
+✅ Footer (bottom of every page)
+✅ Contact page (main hours section)
+✅ Opening Hours display (all 7 days)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+TESTING:
+────────
+After creating Hours sheet:
+1. Reload page: Ctrl+Shift+R
+2. Check Footer → Should show all 7 days
+3. Go to Contact page → Should show Opening Hours
+4. All should match what you entered
+
+═══════════════════════════════════════════════════════════════════════════════
+
+NEED TO CHANGE HOURS?
+─────────────────────
+1. Edit the Hours cell in your Hours sheet
+2. Website updates within 1 hour automatically
+3. Or refresh page with Ctrl+Shift+R to see immediately
+
+═══════════════════════════════════════════════════════════════════════════════
