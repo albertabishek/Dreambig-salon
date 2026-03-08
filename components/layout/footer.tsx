@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
+import { LegalModals } from './legal-modals'
 import type { SalonSettings } from '@/lib/types'
 
 interface FooterProps {
@@ -84,12 +85,7 @@ export function Footer({ settings }: FooterProps) {
             © {currentYear} {settings.name}. All rights reserved.
           </div>
           <div className="flex gap-4 text-xs">
-            <Link href="#" className="hover:text-accent transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="hover:text-accent transition-colors">
-              Terms of Service
-            </Link>
+            <LegalModals />
           </div>
         </div>
       </div>
