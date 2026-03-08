@@ -160,7 +160,7 @@ export function parseGalleryData(rows: string[][]): GalleryImage[] {
 /**
  * Parses settings data from Google Sheets format
  * Expected format: Column-based with headers in first row and values in second row
- * Headers: Name, Phone, WhatsApp, Email, Address, City, Country, Description, Latitude, Longitude
+ * Headers: Name, Phone, WhatsApp, Email, Address, City, Country, Description, Latitude, Longitude, MapEmbedUrl
  */
 export function parseSettingsData(rows: string[][]): SalonSettings {
   const settings = { ...DEFAULT_SALON }
@@ -190,6 +190,7 @@ export function parseSettingsData(rows: string[][]): SalonSettings {
   if (dataMap.description) settings.description = dataMap.description
   if (dataMap.latitude) settings.latitude = parseFloat(dataMap.latitude) || DEFAULT_SALON.latitude
   if (dataMap.longitude) settings.longitude = parseFloat(dataMap.longitude) || DEFAULT_SALON.longitude
+  if (dataMap.mapembedurl) settings.mapEmbedUrl = dataMap.mapembedurl
 
   return settings
 }

@@ -25,6 +25,7 @@ export interface SalonSettings {
   country: string
   latitude: number
   longitude: number
+  mapEmbedUrl?: string
   openingHours: OpeningHours
   description: string
   logo?: string

@@ -11,6 +11,7 @@ export const DEFAULT_SALON: SalonSettings = {
   country: 'USA',
   latitude: 40.7128,
   longitude: -74.006,
+  mapEmbedUrl: undefined,
   description:
     'Experience luxury beauty services at our premium salon. Our expert stylists and therapists are dedicated to making you look and feel your best.',
   openingHours: {
