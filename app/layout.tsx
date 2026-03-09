@@ -5,6 +5,7 @@ import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 import { FloatingWhatsApp } from '@/components/layout/floating-whatsapp'
 import { fetchSettings } from '@/lib/sheets'
+import { detectLanguage, getLanguageMetadata, SUPPORTED_LANGUAGES } from '@/lib/language-detection'
 import './globals.css'
 
 const poppins = Poppins({
@@ -18,43 +19,73 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ request }: { request?: Request }): Promise<Metadata> {
   const settings = await fetchSettings()
+  const detectedLanguage = detectLanguage(request)
+  const languageMetadata = getLanguageMetadata(detectedLanguage, settings)
 
   return {
-    title: `${settings.name} | Premium Beauty & Hair Services`,
-    description: settings.description || 'Experience luxury beauty services at our premium salon. Expert stylists, premium products, and personalized care.',
-    generator: 'v0.app',
+    title: languageMetadata.title,
+    description: languageMetadata.description,
+    generator: 'SliceO',
     metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'),
     openGraph: {
       type: 'website',
-      locale: 'en_US',
+      locale: detectedLanguage.locale,
       url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
-      title: `${settings.name} | Premium Beauty & Hair Services`,
-      description: settings.description || 'Experience luxury beauty services at our premium salon.',
+      title: languageMetadata.title,
+      description: languageMetadata.description,
       siteName: settings.name,
     },
     icons: {
       icon: [
         {
-          url: '/icon-light-32x32.png',
-          media: '(prefers-color-scheme: light)',
+          url: '/company_logo.jpg',
+          sizes: 'any',
+          type: 'image/jpeg',
         },
         {
-          url: '/icon-dark-32x32.png',
-          media: '(prefers-color-scheme: dark)',
+          url: '/company_logo.jpg',
+          sizes: '32x32',
+          type: 'image/jpeg',
         },
         {
-          url: '/icon.svg',
-          type: 'image/svg+xml',
+          url: '/company_logo.jpg',
+          sizes: '16x16',
+          type: 'image/jpeg',
+        },
+        {
+          url: '/company_logo.jpg',
+          sizes: '192x192',
+          type: 'image/jpeg',
+        },
+        {
+          url: '/company_logo.jpg',
+          sizes: '512x512',
+          type: 'image/jpeg',
         },
       ],
-      apple: '/apple-icon.png',
+      apple: [
+        {
+          url: '/company_logo.jpg',
+          sizes: '180x180',
+          type: 'image/jpeg',
+        },
+      ],
     },
     viewport: {
       width: 'device-width',
       initialScale: 1,
       maximumScale: 5,
+    },
+    alternates: {
+      canonical: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
+      languages: Object.fromEntries(
+        Object.entries(SUPPORTED_LANGUAGES).map(([code, config]) => [
+          code,
+          `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/${code}`
+        ])
+      ),
     },
   }
 }
@@ -68,7 +99,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="font-inter antialiased bg-background text-foreground">
+      <body className="font-inter antialiased bg-background text-foreground" suppressHydrationWarning>
         <Navbar settings={settings} />
         <main className="pt-16">
           {children}

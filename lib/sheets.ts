@@ -1,5 +1,6 @@
 import type { Service, GalleryImage, SalonSettings, PageData } from './types'
 import { DEFAULT_SALON, DEFAULT_SERVICES, DEFAULT_GALLERY } from './constants'
+import { fetchTestimonials } from './parseReviewsData'
 
 // Your Google Sheet ID
 const SHEET_ID = '1UysFDqjGUPw7JH2Z3zJBvVuVyG9f3OJxr8S4eBBEii4'
@@ -193,6 +194,13 @@ export function parseSettingsData(rows: string[][]): SalonSettings {
   if (dataMap.mapembedurl) settings.mapEmbedUrl = dataMap.mapembedurl
 
   return settings
+}
+
+/**
+ * Fetches testimonials data
+ */
+export async function fetchTestimonialsData() {
+  return await fetchTestimonials()
 }
 
 /**

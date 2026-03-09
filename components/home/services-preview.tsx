@@ -51,7 +51,7 @@ export function ServicesPreview({ services }: ServicesPreviewProps) {
                 <div className="flex justify-between items-center mb-4">
                   <div>
                     <span className="font-poppins font-bold text-xl text-accent">
-                      ${service.price}
+                      ₹{service.price}
                     </span>
                     <span className="text-foreground/60 text-xs ml-2">
                       {service.duration} min

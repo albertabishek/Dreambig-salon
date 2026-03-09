@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card'
-import { Clock, DollarSign } from 'lucide-react'
+import { Clock, IndianRupee } from 'lucide-react'
 import type { Service } from '@/lib/types'
 
 interface ServiceCardProps {
@@ -34,11 +34,11 @@ export function ServiceCard({ service }: ServiceCardProps) {
         <div className="border-t border-border pt-4 space-y-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-foreground/70 text-sm">
-              <DollarSign size={16} />
+              <IndianRupee size={16} />
               <span>Price</span>
             </div>
             <span className="font-poppins font-bold text-accent text-lg">
-              ${service.price}
+              ₹{service.price}
             </span>
           </div>
           <div className="flex items-center justify-between">
